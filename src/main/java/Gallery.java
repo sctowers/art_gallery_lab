@@ -14,32 +14,30 @@ public class Gallery {
         }
 
     public String getName(){
-         return this.name;
+
+        return this.name;
     }
 
-    public ArrayList<Artwork> getStocks(){
-//    return this.stock;
-//////    }        public ArrayList<Artwork> getStock(){
-          return this.stock;
+    public ArrayList<Artwork> getStock(){
+        return this.stock;
   }
 
     public double getTill(){
-         return this.till;
+
+        return this.till;
     }
 
     public void addArtwork(Artwork artwork) {
         stock.add(artwork);
     }
-    //
     
-    
-    
-  
-
-
-
-
-
+    public void sellArtwork(Artwork artwork, Customer customer){
+        if (stock.contains(artwork) && customer.getWallet()>= artwork.getPrice()){
+            stock.remove(artwork);
+            customer.buyArtwork(artwork);
+            till += artwork.getPrice();
+        }
+    }
 
 
 
